@@ -64,6 +64,7 @@ sap.ui.define([
                         var sMsg = "Request Created Successfully";
                         this.getView().setBusy(false);
                         MessageBox.success(sMsg);
+                        this.removeDataPopulated();
                     }.bind(this),
                     error: function (error) {
                         this.getView().setBusy(false);
@@ -89,7 +90,14 @@ sap.ui.define([
                 // oUplColItem.setUrl(sServiceUrl);
                 // oUplColItem.setMimeType("application/pdf");
                 // oUplColItem.download(false);
-                // sap.m.URLHelper.redirect(sServiceUrl);                    
+                // sap.m.URLHelper.redirect(sServiceUrl);  
+
+            },
+            removeDataPopulated: function () {
+                this.getView().byId("idIpAccountHolder").setValue("");
+                this.getView().byId("idIpIBAN").setValue("");
+                this.getView().byId("idIpSwiftCode").setValue("");
+                this.getView().byId("idUploadFile").setValue("");
             },
 
             validateIBAN: function () {

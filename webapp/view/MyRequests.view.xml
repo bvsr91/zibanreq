@@ -7,16 +7,20 @@
     xmlns:u="sap.ui.unified"
     xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
     xmlns:smartTable="sap.ui.comp.smarttable"
-    xmlns:t="sap.ui.table">
+    xmlns:t="sap.ui.table"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
     <Page showHeader="false" enableScrolling="true" class="sapUiContentPadding" showNavButton="false">
         <content>
+            <Title text="List of IBAN Completed/Pending Requests"/>
             <Panel expandable="true" headerText="Filter Bar" class="sapUiNoContentPadding">
                 <content>
                     <smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="Request" />
                 </content>
             </Panel>
-            <smartTable:SmartTable entitySet="Request" id="idSTRequest" smartFilterId="smartFilterBar" useExportToExcel="true" beforeExport="onBeforeExport" useTablePersonalisation="true" header="My Requests" showRowCount="true" useVariantManagement="false" enableAutoBinding="true" class="sapUiResponsiveContentPadding" tableType="Table" enableAutoColumnWidth="true" initiallyVisibleFields="RequestID,VendorUser,VendorName,VendorCode,
-                    IBAN,AccountHolder,BIC_SWIFT_Code" ignoredFields="RequestUUID,linkToAttach_uuid" requestAtLeastFields="RequestUUID,linkToAttach_uuid">
+                    <smartTable:SmartTable entitySet="Request" smartFilterId="smartFilterBar" beforeExport="onBeforeExport" showRowCount="true" tableType="ResponsiveTable"
+                     placeToolbarInTable="true" header="Line Items" persistencyKey="SmartTableDataState" 
+                    enableAutoColumnWidth="true" enableAutoBinding="true" useVariantManagement="false" demandPopin="true" class="sapUiResponsiveContentPadding" 
+                    ignoredFields="RequestUUID,linkToAttach_uuid" requestAtLeastFields="RequestUUID,linkToAttach_uuid">
                 <t:Table id="idUiTabMyRequest" visibleRowCount="10">
                     <t:columns>
                         <t:Column width="10rem">

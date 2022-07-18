@@ -12,6 +12,7 @@ sap.ui.define([
 
         return Controller.extend("com.ferrero.zibanreq.controller.MyRequests", {
             onInit: function () {
+              
 
             },
             onpressAddAccount: function () {
