@@ -1,0 +1,176 @@
+{
+    "_version": "1.40.0",
+    "sap.app": {
+        "id": "com.ferrero.zibanreq",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap-ux/fiori-freestyle-writer:basic",
+            "version": "0.11.15",
+            "toolsId": "d1e8eae0-80bb-429b-a5ef-b618f9a30aeb"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/v2/IbanSrv/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "com-ferrero-zibanreq-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "ibanreq",
+                    "action": "display",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": ""
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.102.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.ferrero.zibanreq.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.ferrero.zibanreq.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteHome",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetHome"
+                    ]
+                },
+                {
+                    "name": "addNewAccount",
+                    "pattern": "addNewAccount",
+                    "target": "addNewAccount"
+                },
+                {
+                    "name": "deleteAccount",
+                    "pattern": "deleteAccount",
+                    "target": "deleteAccount"
+                },
+                {
+                    "name": "myRequests",
+                    "pattern": "myRequests",
+                    "target": "myRequests"
+                }
+            ],
+            "targets": {
+                "TargetHome": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Home",
+                    "viewName": "Home"
+                },
+                "addNewAccount": {
+                    "viewName": "AddNewAccount",
+                    "viewType": "XML",
+                    "viewId": "AddNewAccount",
+                    "clearControlAggregation": false,
+                    "transition": "show"
+                },
+                "deleteAccount": {
+                    "viewName": "DeleteAccount",
+                    "viewType": "XML",
+                    "viewId": "DeleteAccount",
+                    "clearControlAggregation": false,
+                    "transition": "show"
+                },
+                "myRequests": {
+                    "viewName": "MyRequests",
+                    "viewType": "XML",
+                    "viewId": "MyRequests",
+                    "clearControlAggregation": false,
+                    "transition": "show"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "com.ferrero.zibanreq.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "undefined"
+    }
+}

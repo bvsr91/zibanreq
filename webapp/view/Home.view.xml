@@ -1,0 +1,86 @@
+<mvc:View controllerName="com.ferrero.zibanreq.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout"
+    xmlns:microchart="sap.suite.ui.microchart">
+    <Page id="page" showHeader="false" enableScrolling="true">
+
+        <FlexBox height="100px" alignItems="Start" justifyContent="Center" class="sapUiResponsiveMargin">
+            <layout:VerticalLayout>
+                <layout:HorizontalLayout>
+                    <Title titleStyle="H5" wrapping="true" text="welcome SAHITHYA on behalf of FERRERO" />
+                </layout:HorizontalLayout>
+                <layout:HorizontalLayout>
+                    <Title titleStyle="H5" wrapping="true" text="Please select the type of request you want to submit" />
+                </layout:HorizontalLayout>
+            </layout:VerticalLayout>
+        </FlexBox>
+
+        <FlexBox height="200px" alignItems="Center" justifyContent="Center">
+            <layout:VerticalLayout >
+                <layout:HorizontalLayout allowWrapping="true">
+                    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Add New IBAN" press="onAddNewAccount">
+                        <tileContent>
+                            <TileContent>
+                                <content>
+                                    <ImageContent class="sapUiLargeMarginBegin iconSizecontent" src="sap-icon://add" />
+                                </content>
+                            </TileContent>
+                        </tileContent>
+                    </GenericTile>
+                    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Delete IBAN" press="onDeleteAccount">
+                        <tileContent>
+                            <TileContent>
+                                <content class="iconSizeClass">
+                                    <ImageContent class="sapUiLargeMarginBegin iconSizecontent" src="sap-icon://delete" />
+                                </content>
+                            </TileContent>
+                        </tileContent>
+                    </GenericTile>
+                    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="My Requests" press="onPressMyRequests">
+                        <tileContent>
+                            <TileContent>
+                                <content>
+                                    <ImageContent width="100rem" class="sapUiLargeMarginBegin iconSizecontent" src="sap-icon://request" />
+                                </content>
+                            </TileContent>
+                        </tileContent>
+                    </GenericTile>
+                </layout:HorizontalLayout>
+            </layout:VerticalLayout>
+        </FlexBox>
+        <!-- <FlexBox height="100px" alignItems="Center" justifyContent="Center" class="sapUiLargeMarginTop">  
+            <layout:VerticalLayout class="sapUiResponsiveMargin">
+			    <layout:HorizontalLayout allowWrapping="true">
+				    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Add New IBAN" press="onAddNewAccount">
+                        <tileContent>
+						    <TileContent>
+                                <content>
+                                    <ImageContent class="sapUiLargeMarginBegin iconSizecontent" src="sap-icon://add" />
+                                </content>
+						    </TileContent>
+					    </tileContent>
+				    </GenericTile>
+                    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="Delete IBAN" press="onDeleteAccount">
+                        <tileContent>
+						    <TileContent>
+                                <content class="iconSizeClass">
+                                    <ImageContent class="sapUiLargeMarginBegin iconSizecontent" src="sap-icon://delete" />
+                                </content>
+                            </TileContent>
+					    </tileContent>
+				    </GenericTile>
+                     <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="My Requests" press="onPressMyRequests">
+                        <tileContent>
+						    <TileContent>
+                                <content>
+                                    <ImageContent width="100rem" class="sapUiLargeMarginBegin iconSizecontent" src="sap-icon://request" />
+                                </content>
+                            </TileContent>
+					    </tileContent>
+				    </GenericTile>		
+			    </layout:HorizontalLayout>
+            </layout:VerticalLayout>
+        </FlexBox>       -->
+    </Page>
+</mvc:View>

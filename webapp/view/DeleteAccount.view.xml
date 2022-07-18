@@ -1,0 +1,65 @@
+<mvc:View controllerName="com.ferrero.zibanreq.controller.DeleteAccount"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:footerbar="sap.ushell.ui.footerbar">
+    <Page id="page" showHeader="true" enableScrolling="true">
+        <customHeader>
+            <Toolbar>
+                <Button type="Back" press="onPress" />
+                <ToolbarSpacer/>
+                <Title text="Delete Existing IBAN" level="H2"/>
+                <ToolbarSpacer/>
+                <Button icon="sap-icon://home" text="Home" type="Transparent" press="onPressHome" ariaLabelledBy="editButtonLabel"/>
+            </Toolbar>
+        </customHeader>
+        <VBox>
+            <HBox>
+                <Title wrapping="true" level="H6" text="Welcome SAHITHYA on behalf of FERRERO" class="sapUiTinyMargin"/>
+            </HBox>
+            <HBox>
+                <Title wrapping="true" level="H6" text="Please select the type of request you want to submit" class="sapUiTinyMargin"/>
+            </HBox>
+        </VBox>
+
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <f:Form id="FormChange354" editable="true">
+                    <f:layout>
+                        <f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="5" emptySpanL="5" emptySpanM="5" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" />
+                    </f:layout>
+                    <f:formContainers>
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement label="IBAN Account Holder">
+                                    <f:fields>
+                                        <Input id="accountHolderName" type="Text" placeholder="Enter the Account Holder Name" />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="IBAN Coordinates">
+                                    <f:fields>
+                                        <Input id="coordinateNo" type="Text" placeholder="Enter the IBAN Coordinator Code" liveChange="validateIBAN"/>
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="">
+                                    <MessageStrip showIcon="true" type="Error" showCloseButton="true" id="message" visible="false"></MessageStrip>
+                                </f:FormElement>
+                                <f:FormElement label="">
+                                    <MessageStrip showIcon="true" type="Success" showCloseButton="true" id="message1" visible="false"></MessageStrip>
+                                </f:FormElement>
+                                <f:FormElement label="">
+                                    <Button text="Submit" press="onSubmitDelete" class="sapUiLargeMarginEnd"/>
+                                    <Button text="My Request" press="onPressMyRequest" class="sapUiLargeMarginEnd"/>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+                    </f:formContainers>
+                </f:Form>
+            </VBox>
+        </content>
+
+    </Page>
+</mvc:View>
