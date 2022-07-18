@@ -21,6 +21,9 @@ sap.ui.define([
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 oRouter.navTo("myRequests")
             },
+            onPressNavBack: function () {
+                history.go(-1);
+            },
             onSubmitAdd: function () {
                 var that = this;
                 var oIpIban = this.getView().byId("idIpIBAN"),
@@ -98,6 +101,9 @@ sap.ui.define([
                 this.getView().byId("idIpIBAN").setValue("");
                 this.getView().byId("idIpSwiftCode").setValue("");
                 this.getView().byId("idUploadFile").setValue("");
+                this.getView().byId("message1").setVisible(false);
+                this.getView().byId("swiftMessage2").setVisible(false);
+
             },
 
             validateIBAN: function () {

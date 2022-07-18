@@ -35,7 +35,7 @@
                     <OverflowToolbar>
                         <content>
                             <ToolbarSpacer />
-                            <!-- <Button icon="sap-icon://add" tooltip="Add new record" press=".handleAddVendor" /> -->
+                            <Button icon="sap-icon://home" tooltip="Home" press=".onPressHome" />
                             <!-- <Button id="createButton" icon="sap-icon://add-document" tooltip="Create" visible="{userModel>/bPricingVendorAddBtn}" press="onOpenAddDialog"/> -->
                         </content>
                     </OverflowToolbar>

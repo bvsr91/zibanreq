@@ -21,6 +21,9 @@ sap.ui.define([
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 oRouter.navTo("myRequests")
             },
+            onPressNavBack: function () {
+                history.go(-1);
+            },
 
             onSubmitDelete: function () {
                 this.validateIBAN();

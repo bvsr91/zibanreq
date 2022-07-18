@@ -10,7 +10,7 @@
     <Page id="page" showHeader="true" enableScrolling="true">
         <customHeader>
             <Toolbar>
-                <Button type="Back" press="onPress" />
+                <Button type="Back" press="onPressNavBack" />
                 <ToolbarSpacer/>
                 <Title text="Add New IBAN" level="H2"/>
                 <ToolbarSpacer/>
