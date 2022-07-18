@@ -17,7 +17,18 @@
             </Panel>
             <smartTable:SmartTable entitySet="Request" id="idSTRequest" smartFilterId="smartFilterBar" useExportToExcel="true" beforeExport="onBeforeExport" useTablePersonalisation="true" header="My Requests" showRowCount="true" useVariantManagement="false" enableAutoBinding="true" class="sapUiResponsiveContentPadding" tableType="Table" enableAutoColumnWidth="true" initiallyVisibleFields="RequestID,VendorUser,VendorName,VendorCode,
                     IBAN,AccountHolder,BIC_SWIFT_Code" ignoredFields="RequestUUID,linkToAttach_uuid" requestAtLeastFields="RequestUUID,linkToAttach_uuid">
-                <t:Table id="idUiTab" visibleRowCount="10">
+                <t:Table id="idUiTabMyRequest" visibleRowCount="10">
+                    <t:columns>
+                        <t:Column width="10rem">
+                            <t:customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "linkToAttach_uuid", "columnIndex": 2, "width": "360px", "leadingProperty": "linkToAttach_uuid"}'/>
+                            </t:customData>
+                            <Label text="Attachment" />
+                            <t:template>
+                                <Link text="Download" press="onPressDownloadLink" wrapping="false" />
+                            </t:template>
+                        </t:Column>
+                    </t:columns>
                 </t:Table>
                 <smartTable:customToolbar>
                     <OverflowToolbar>

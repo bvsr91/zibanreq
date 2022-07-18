@@ -33,5 +33,11 @@ sap.ui.define([
                 var oBinding = oList.getBinding("items");
                 oBinding.filter(aFilters, "Application");
             },
+            onPressDownloadLink: function (oEvent) {
+                var refId = oEvent.getSource().getBindingContext().getObject().linkToAttach_uuid;
+                var oModel = this.getOwnerComponent().getModel();
+                var sServiceUrl = oModel.sServiceUrl + "/RequestAttachments(guid'" + refId + "')/$value";
+                sap.m.URLHelper.redirect(sServiceUrl);
+            }
         });
     });
