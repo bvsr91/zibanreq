@@ -1,8 +1,8 @@
 sap.ui.define([
-        "sap/ui/core/UIComponent",
-        "sap/ui/Device",
-        "com/ferrero/zibanreq/model/models"
-    ],
+    "sap/ui/core/UIComponent",
+    "sap/ui/Device",
+    "com/ferrero/zibanreq/model/models"
+],
     function (UIComponent, Device, models) {
         "use strict";
 
@@ -25,6 +25,14 @@ sap.ui.define([
 
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
+                this.getUser();
+            },
+            getUser: async function () {
+                var oModel = this.getModel();
+                const info = await $.get(oModel.sServiceUrl + '/getUserDetails');
+                if (info.d) {
+                    this.getModel("userModel").setProperty("/userid", info.d.getUserDetails);
+                }
             }
         });
     }

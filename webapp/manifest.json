@@ -20,9 +20,18 @@
                 "uri": "/v2/IbanSrv/",
                 "type": "OData",
                 "settings": {
-                    "annotations": [],
+                    "annotations": [
+                        "annotation0"
+                    ],
                     "localUri": "localService/metadata.xml",
                     "odataVersion": "2.0"
+                }
+            },
+            "annotation0": {
+                "uri": "annotations/annotations0.xml",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "annotations/annotation0.xml"
                 }
             }
         },
@@ -88,6 +97,9 @@
                 "dataSource": "mainService",
                 "preload": true,
                 "settings": {}
+            },
+            "userModel": {
+                "type": "sap.ui.model.json.JSONModel"
             }
         },
         "resources": {

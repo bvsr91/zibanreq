@@ -23,7 +23,6 @@ sap.ui.define([
             },
             onSubmitAdd: function () {
                 var that = this;
-                // Data for CAP to create entry
                 var oIpIban = this.getView().byId("idIpIBAN"),
                     oIpSwift = this.getView().byId("idIpSwiftCode"),
                     sIbanValueState = oIpIban.getValueState(),
@@ -31,6 +30,7 @@ sap.ui.define([
                 var oPayLoad = {
                     "AccountHolder": this.getView().byId("idIpAccountHolder").getValue(),
                     "IBAN": oIpIban.getValue(),
+                    "RequestType": "New",
                     "BIC_SWIFT_Code": oIpSwift.getValue()
                 }
                 if (sIbanValueState !== "Success") {
