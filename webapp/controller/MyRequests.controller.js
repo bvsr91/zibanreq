@@ -36,11 +36,26 @@ sap.ui.define([
                 var oBinding = oList.getBinding("items");
                 oBinding.filter(aFilters, "Application");
             },
-            onPressDownloadLink: function (oEvent) {
+            onPressDownloadLink: async function (oEvent) {
                 var refId = oEvent.getSource().getBindingContext().getObject().linkToAttach_uuid;
                 var oModel = this.getOwnerComponent().getModel();
-                var sServiceUrl = oModel.sServiceUrl + "/RequestAttachments(guid'" + refId + "')/$value";
-                sap.m.URLHelper.redirect(sServiceUrl);
+                var sServiceUrl = oModel.sServiceUrl + "/RequestAttachments(guid'" + refId + "')/content";
+                sap.ui.core.BusyIndicator.show();
+                const oAttach = await $.get(oModel.sServiceUrl + "/RequestAttachments(guid'" + refId + "')");
+                var sTitle;
+                if (oAttach.d) {
+                    sTitle = oAttach.d.fileName;
+                }
+                // sap.m.URLHelper.redirect(sServiceUrl);
+                var oPdfViewer = new sap.m.PDFViewer();
+                oPdfViewer.setShowDownloadButton(false);
+                this.getView().addDependent(oPdfViewer);
+
+
+                oPdfViewer.setSource(sServiceUrl);
+                oPdfViewer.setTitle(sTitle);
+                sap.ui.core.BusyIndicator.hide();
+                oPdfViewer.open();
             },
             onBeforeRebindTable: async function (oEvent) {
                 var mBindingParams = oEvent.getParameter("bindingParams"),

@@ -17,13 +17,13 @@
             <smartTable:SmartTable id="idSTMyRequests" entitySet="Request_U" smartFilterId="smartFilterBar" beforeExport="onBeforeExport" showRowCount="true" tableType="ResponsiveTable" placeToolbarInTable="true" header="Requests" persistencyKey="SmartTableDataState" enableAutoColumnWidth="true" enableAutoBinding="true" useVariantManagement="false" demandPopin="true" class="sapUiResponsiveContentPadding" ignoredFields="RequestUUID,linkToAttach_uuid" requestAtLeastFields="RequestUUID,linkToAttach_uuid" beforeRebindTable="onBeforeRebindTable">
                 <t:Table id="idUiTabMyRequest" visibleRowCount="9" selectionMode="None">
                     <t:columns>
-                        <t:Column width="10rem">
+                        <t:Column width="6rem" hAlign="Center">
                             <t:customData>
                                 <core:CustomData key="p13nData" value='\{"columnKey": "linkToAttach_uuid", "columnIndex": 5, "width": "360px", "leadingProperty": "linkToAttach_uuid"}'/>
                             </t:customData>
                             <Label text="Attachment" />
                             <t:template>
-                                <Link text="Download" press="onPressDownloadLink" wrapping="false" />
+                                <core:Icon alt="Preview" src="sap-icon://pdf-attachment" visible="{= ${linkToAttach_uuid} !== null ? true : false}" press="onPressDownloadLink" size="1.2rem" tooltip="Preview" color="Default" />
                             </t:template>
                         </t:Column>
                     </t:columns>

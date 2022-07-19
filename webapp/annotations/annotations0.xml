@@ -2,7 +2,7 @@
     <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
         <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI" />
     </edmx:Reference>
-    <edmx:Reference Uri="/v2/MroSrv/$metadata">
+    <edmx:Reference Uri="/v2/IbanSrv/$metadata">
         <edmx:Include Alias="Metadata" Namespace="CatalogService" />
     </edmx:Reference>
     <edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
@@ -10,7 +10,7 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="zibanreq.localService.annotation0.IbanSrv">
-            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.PricingConditions/status_code">
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.Request_U/status_code">
                 <Annotation Term="Common.ValueList">
                     <Record Type="Common.ValueListType">
                         <PropertyValue Property="CollectionPath" String="StatusCodeList" />
@@ -26,7 +26,7 @@
                 </Annotation>
                 <Annotation Term="Common.ValueListWithFixedValues" Bool="true" />
             </Annotations>
-            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.Request/status_code">
+            <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.Request_U/status_code">
                 <Annotation Term="Common.ValueList">
                     <Record Type="Common.ValueListType">
                         <PropertyValue Property="CollectionPath" String="StatusCodeList" />
