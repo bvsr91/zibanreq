@@ -19,11 +19,11 @@
         </customHeader>
         <VBox>
             <HBox>
-                <Title wrapping="true" level="H6" text="Welcome SAHITHYA on behalf of FERRERO" class="sapUiTinyMargin"/>
+                <Title wrapping="true" level="H6" text="Welcome {userModel>/userDetail/User} on behalf of {userModel>/userDetail/VendorName}" class="sapUiLargeMarginBegin sapUiTinyMarginTop"/>
             </HBox>
-            <HBox>
+            <!-- <HBox>
                 <Title wrapping="true" level="H6" text="Please select the type of request you want to submit" class="sapUiTinyMargin"/>
-            </HBox>
+            </HBox> -->
         </VBox>
 
         <content>
@@ -43,7 +43,7 @@
                                 </f:FormElement>
                                 <f:FormElement label="IBAN Coordinates">
                                     <f:fields>
-                                        <Input id="idIpIBAN" type="Text" placeholder="Enter the IBAN Coordinator Code" liveChange="validateIBAN"/>
+                                        <Input id="idIpIBAN" required="true" type="Text" placeholder="Enter the IBAN Coordinator Code" liveChange="validateIBAN"/>
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="">
@@ -56,9 +56,9 @@
                                         <MessageStrip showIcon="true" type="Success" showCloseButton="true" id="message1" visible="false"></MessageStrip>
                                     </f:fields>
                                 </f:FormElement>
-                                <f:FormElement label="BIC/SWIFT Code">
+                                <f:FormElement label="BIC/SWIFT Code" required="true">
                                     <f:fields>
-                                        <Input id="idIpSwiftCode" type="Text" placeholder="Enter the BIC/SWIFT Code" liveChange="validateSwiftCode"/>
+                                        <Input id="idIpSwiftCode" required="true" type="Text" placeholder="Enter the BIC/SWIFT Code" liveChange="validateSwiftCode"/>
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="">
@@ -73,13 +73,13 @@
                                 </f:FormElement>
                                 <f:FormElement label="Upload Attachment">
                                     <f:fields>
-                                        <u:FileUploader id="idUploadFile" tooltip="Upload your file" sameFilenameAllowed="true" buttonText="Browse" buttonOnly="false" change="onUpload">
+                                        <u:FileUploader state="required" fileType="pdf,PDF" id="idUploadFile" tooltip="Upload your file" sameFilenameAllowed="true" buttonText="Browse" buttonOnly="false" change="onUpload">
                                         </u:FileUploader>
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="">
-                                    <Button text="Submit" press="onSubmitAdd" class="sapUiLargeMarginEnd"/>
-                                    <Button text="My Request" press="onPressMyRequests" class="sapUiLargeMarginEnd"/>
+                                    <Button text="Submit" type="Emphasized" press="onSubmitAdd" class="sapUiLargeMarginEnd"/>
+                                    <Button text="My Requests" type="Emphasized" press="onPressMyRequests" class="sapUiLargeMarginEnd"/>
                                 </f:FormElement>
                             </f:formElements>
                         </f:FormContainer>

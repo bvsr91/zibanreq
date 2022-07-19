@@ -18,11 +18,11 @@
         </customHeader>
         <VBox>
             <HBox>
-                <Title wrapping="true" level="H6" text="Welcome SAHITHYA on behalf of FERRERO" class="sapUiTinyMargin"/>
+                <Title wrapping="true" level="H6" text="Welcome {userModel>/userDetail/User} on behalf of {userModel>/userDetail/VendorName}" class="sapUiLargeMarginBegin sapUiTinyMarginTop"/>
             </HBox>
-            <HBox>
+            <!-- <HBox>
                 <Title wrapping="true" level="H6" text="Please select the type of request you want to submit" class="sapUiTinyMargin"/>
-            </HBox>
+            </HBox> -->
         </VBox>
 
         <content>
@@ -36,12 +36,12 @@
                             <f:formElements>
                                 <f:FormElement label="IBAN Account Holder">
                                     <f:fields>
-                                        <Input id="accountHolderName" type="Text" placeholder="Enter the Account Holder Name" />
+                                        <Input id="idIpAccountHolder" required="true" type="Text" placeholder="Enter the Account Holder Name" />
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="IBAN Coordinates">
                                     <f:fields>
-                                        <Input id="coordinateNo" type="Text" placeholder="Enter the IBAN Coordinator Code" liveChange="validateIBAN"/>
+                                        <Input id="idIpIBAN" required="true" type="Text" placeholder="Enter the IBAN Coordinator Code" liveChange="validateIBAN"/>
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="">
@@ -51,8 +51,8 @@
                                     <MessageStrip showIcon="true" type="Success" showCloseButton="true" id="message1" visible="false"></MessageStrip>
                                 </f:FormElement>
                                 <f:FormElement label="">
-                                    <Button text="Submit" press="onSubmitDelete" class="sapUiLargeMarginEnd"/>
-                                    <Button text="My Request" press="onPressMyRequest" class="sapUiLargeMarginEnd"/>
+                                    <Button text="Submit" type="Emphasized" press="onSubmitDelete" class="sapUiLargeMarginEnd"/>
+                                    <Button text="My Requests" type="Emphasized" press="onPressMyRequest" class="sapUiLargeMarginEnd"/>
                                 </f:FormElement>
                             </f:formElements>
                         </f:FormContainer>

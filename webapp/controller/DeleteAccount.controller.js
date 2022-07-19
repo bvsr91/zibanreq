@@ -1,12 +1,13 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/MessageToast",
-    "sap/m/MessageStrip"
+    "sap/m/MessageStrip",
+    "sap/m/MessageBox"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, MessageToast, MessageStrip) {
+    function (Controller, MessageToast, MessageStrip, MessageBox) {
         "use strict";
 
         return Controller.extend("com.ferrero.zibanreq.controller.DeleteAccount", {
@@ -24,20 +25,68 @@ sap.ui.define([
             onPressNavBack: function () {
                 history.go(-1);
             },
-
             onSubmitDelete: function () {
-                this.validateIBAN();
+                var that = this;
+                var oIpIban = this.getView().byId("idIpIBAN"),
+                    sIbanValueState = oIpIban.getValueState();
+                var oUserDetail = this.getOwnerComponent().getModel("userModel").getProperty("/userDetail");
+                var oPayLoad = {
+                    "AccountHolder": this.getView().byId("idIpAccountHolder").getValue(),
+                    "IBAN": oIpIban.getValue(),
+                    "RequestType": "Delete",
+                    "VendorUser": oUserDetail.User,
+                    "VendorCode": oUserDetail.VendoCode,
+                    "VendorName": oUserDetail.VendorName
+                }
+                if (sIbanValueState !== "Success") {
+                    MessageBox.error("Please Provide valid IBAN code");
+                    return;
+                }
+
+                var oModel = this.getOwnerComponent().getModel();
+                // var sURL = "/RequestAttachments";
+                var sURL = "/Request";
+                //Create call for CAP OData Service
+                this.getView().setBusy(true);
+                oModel.create(sURL, oPayLoad, {
+                    success: function (oData, oResponse) {
+                        // var id = oData.id;
+                        var sMsg = "Delete Request Created Successfully";
+                        this.getView().setBusy(false);
+                        MessageBox.success(sMsg);
+                        this.removeDataPopulated();
+                    }.bind(this),
+                    error: function (error) {
+                        this.getView().setBusy(false);
+                        MessageBox.error(error);
+                    }.bind(this),
+                });
+
+
             },
+            removeDataPopulated: function () {
+                var oIpIban = this.getView().byId("idIpIBAN");
+                this.getView().byId("idIpAccountHolder").setValue("");
+                this.getView().byId("idIpIBAN").setValue("");
+                this.getView().byId("message1").setVisible(false);
+                oIpIban.setValueState("None");
+
+            },
+
             validateIBAN: function () {
-                var sCoordinateValue = this.getView().byId("coordinateNo").getValue();
+                // var sCoordinateValue = this.getView().byId("idIpIBAN").getValue();
+                var oIpIban = this.getView().byId("idIpIBAN"),
+                    sCoordinateValue = oIpIban.getValue();
                 if (sCoordinateValue == '') {
                     this.getView().byId("message").setText("IBAN cannot be blank");
                     this.getView().byId("message").setVisible(true);
                     this.getView().byId("message1").setVisible(false);
+                    oIpIban.setValueState("Error");
                 } else if (sCoordinateValue.length < 15) {
                     this.getView().byId("message").setText(" IBAN Validation Error!! IBAN should contains atleast 15 character ");
                     this.getView().byId("message").setVisible(true);
                     this.getView().byId("message1").setVisible(false);
+                    oIpIban.setValueState("Error");
                 }
                 else {
                     this.isValidIBANNumber(sCoordinateValue);
@@ -45,10 +94,12 @@ sap.ui.define([
                         this.getView().byId("message1").setText("IBAN IS CORRECT");
                         this.getView().byId("message1").setVisible(true);
                         this.getView().byId("message").setVisible(false);
+                        oIpIban.setValueState("Success");
                     } else if (this.isValidIBANNumber(sCoordinateValue) == false) {
                         this.getView().byId("message").setText("Invalid IBAN, PLease enter the Valid One");
                         this.getView().byId("message").setVisible(true);
                         this.getView().byId("message1").setVisible(false);
+                        oIpIban.setValueState("Error");
                     }
                 }
             },
