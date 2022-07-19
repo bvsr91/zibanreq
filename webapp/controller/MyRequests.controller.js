@@ -45,21 +45,21 @@ sap.ui.define([
             onBeforeRebindTable: async function (oEvent) {
                 var mBindingParams = oEvent.getParameter("bindingParams"),
                     oModel = this.getOwnerComponent().getModel();
-                var oUserModel = this.getOwnerComponent().getModel("userModel");
-                if (!oUserModel.getProperty("/userid")) {
-                    await this.getUser();
-                }
-                var aFilter = [];
-                var newFilter = new Filter("createdBy", FilterOperator.EQ, oUserModel.getProperty("/userid"));
+                // var oUserModel = this.getOwnerComponent().getModel("userModel");
+                // if (!oUserModel.getProperty("/userid")) {
+                //     await this.getUser();
                 // }
-                mBindingParams.filters.push(newFilter);
+                // var aFilter = [];
+                // var newFilter = new Filter("createdBy", FilterOperator.EQ, oUserModel.getProperty("/userid"));
+                // // }
+                // mBindingParams.filters.push(newFilter);
 
                 oModel.attachRequestFailed(this._showError, this);
                 oModel.attachRequestCompleted(this._detach, this);
             },
             _showError: function (oResponse) {
                 var oModel = this.getOwnerComponent().getModel(),
-                    oMsgs = oResponse.getSource().getMessagesByEntity("/Request");
+                    oMsgs = oResponse.getSource().getMessagesByEntity("/Request_U");
                 if (oMsgs[0]) {
                     MessageBox.error(oMsgs[0].message);
                     oModel.detachRequestFailed(this._showError, this);

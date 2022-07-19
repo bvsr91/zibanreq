@@ -9,16 +9,13 @@
     xmlns:smartTable="sap.ui.comp.smarttable"
     xmlns:t="sap.ui.table"
     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-    <Page showHeader="false" enableScrolling="true" class="sapUiContentPadding" showNavButton="false">
+    <Page showHeader="false" enableScrolling="false" class="sapUiContentPadding" showNavButton="true">
         <content>
-            <Title text="List of IBAN Completed/Pending Requests"/>
-            <Panel expandable="true" headerText="Filter Bar" class="sapUiNoContentPadding">
-                <content>
-                    <smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="Request" />
-                </content>
-            </Panel>
-            <smartTable:SmartTable id="idSTMyRequests" entitySet="Request" smartFilterId="smartFilterBar" beforeExport="onBeforeExport" showRowCount="true" tableType="ResponsiveTable" placeToolbarInTable="true" header="Line Items" persistencyKey="SmartTableDataState" enableAutoColumnWidth="true" enableAutoBinding="true" useVariantManagement="false" demandPopin="true" class="sapUiResponsiveContentPadding" ignoredFields="RequestUUID,linkToAttach_uuid" requestAtLeastFields="RequestUUID,linkToAttach_uuid" beforeRebindTable="onBeforeRebindTable">
-                <t:Table id="idUiTabMyRequest" visibleRowCount="10" selectionMode="None">
+            <smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="Request_U" />
+            <!-- </content>
+            </Panel> -->
+            <smartTable:SmartTable id="idSTMyRequests" entitySet="Request_U" smartFilterId="smartFilterBar" beforeExport="onBeforeExport" showRowCount="true" tableType="ResponsiveTable" placeToolbarInTable="true" header="Requests" persistencyKey="SmartTableDataState" enableAutoColumnWidth="true" enableAutoBinding="true" useVariantManagement="false" demandPopin="true" class="sapUiResponsiveContentPadding" ignoredFields="RequestUUID,linkToAttach_uuid" requestAtLeastFields="RequestUUID,linkToAttach_uuid" beforeRebindTable="onBeforeRebindTable">
+                <t:Table id="idUiTabMyRequest" visibleRowCount="9" selectionMode="None">
                     <t:columns>
                         <t:Column width="10rem">
                             <t:customData>

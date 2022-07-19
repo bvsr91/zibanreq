@@ -29,9 +29,9 @@ sap.ui.define([
             },
             getUser: async function () {
                 var oModel = this.getModel();
-                const info = await $.get(oModel.sServiceUrl + '/getUserDetails');
+                const info = await $.get(oModel.sServiceUrl + '/User_Vendor_V');
                 if (info.d) {
-                    this.getModel("userModel").setProperty("/userid", info.d.getUserDetails);
+                    this.getModel("userModel").setProperty("/userDetail", info.d.results[0]);
                 }
             }
         });

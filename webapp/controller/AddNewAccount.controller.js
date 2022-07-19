@@ -30,11 +30,15 @@ sap.ui.define([
                     oIpSwift = this.getView().byId("idIpSwiftCode"),
                     sIbanValueState = oIpIban.getValueState(),
                     sSwiftValueState = oIpSwift.getValueState();
+                var oUserDetail = this.getOwnerComponent().getModel("userModel").getProperty("/userDetail");
                 var oPayLoad = {
                     "AccountHolder": this.getView().byId("idIpAccountHolder").getValue(),
                     "IBAN": oIpIban.getValue(),
                     "RequestType": "New",
-                    "BIC_SWIFT_Code": oIpSwift.getValue()
+                    "BIC_SWIFT_Code": oIpSwift.getValue(),
+                    "VendorUser": oUserDetail.User,
+                    "VendorCode": oUserDetail.VendoCode,
+                    "VendorName": oUserDetail.VendorName
                 }
                 if (sIbanValueState !== "Success") {
                     MessageBox.error("Please Provide valid IBAN code");
