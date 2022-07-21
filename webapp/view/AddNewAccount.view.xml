@@ -56,7 +56,7 @@
                                         <MessageStrip showIcon="true" type="Success" showCloseButton="true" id="message1" visible="false"></MessageStrip>
                                     </f:fields>
                                 </f:FormElement>
-                                <f:FormElement label="BIC/SWIFT Code" required="true">
+                                <f:FormElement label="BIC/SWIFT Code">
                                     <f:fields>
                                         <Input id="idIpSwiftCode" required="true" type="Text" placeholder="Enter the BIC/SWIFT Code" liveChange="validateSwiftCode"/>
                                     </f:fields>
@@ -73,7 +73,7 @@
                                 </f:FormElement>
                                 <f:FormElement label="Upload Attachment">
                                     <f:fields>
-                                        <u:FileUploader state="required" fileType="pdf,PDF" id="idUploadFile" tooltip="Upload your file" sameFilenameAllowed="true" buttonText="Browse" buttonOnly="false" change="onUpload">
+                                        <u:FileUploader fileType="pdf,PDF" id="idUploadFile" tooltip="Upload your file" sameFilenameAllowed="true" buttonText="Browse" buttonOnly="false" change="onUpload">
                                         </u:FileUploader>
                                     </f:fields>
                                 </f:FormElement>

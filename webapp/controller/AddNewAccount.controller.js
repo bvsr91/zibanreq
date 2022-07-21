@@ -249,28 +249,28 @@ sap.ui.define([
             },
             validateSwiftCode: function () {
                 // var sSwiftCode = this.getView().byId("idIpSwiftCode").getValue();
-                var oIpSwift = this.getView().byId("idIpSwiftCode"),
-                    oIpIBAN = this.getView().byId("idIpIBAN"),
-                    sIBANCode = oIpIBAN.getValue(),
-                    sSwiftCode = oIpSwift.getValue();
+                var oIpSwift = this.getView().byId("idIpSwiftCode").getValue(),
+                    oIpIBAN = this.getView().byId("idIpIBAN").getValue(),
+                    sIBANCode = oIpIBAN.replace(/ /g, "").toUpperCase(),
+                    sSwiftCode = oIpSwift.replace(/ /g, "").toUpperCase();
 
                 if (sSwiftCode == '') {
-                    this.getView().byId("swiftMessage1").setText("IBAN BIC/SWIFT code cannot be empty");
+                    this.getView().byId("swiftMessage1").setText("BIC/SWIFT code cannot be empty");
+                    this.getView().byId("swiftMessage1").setVisible(true);
+                    this.getView().byId("swiftMessage2").setVisible(false);
+                    oIpSwift.setValueState("Error");
+                } else if (sSwiftCode.length < 8 || sSwiftCode.length > 11) {
+                    this.getView().byId("swiftMessage1").setText("The length of BIC/SWIFT Code is 8 or 11 characters only");
                     this.getView().byId("swiftMessage1").setVisible(true);
                     this.getView().byId("swiftMessage2").setVisible(false);
                     oIpSwift.setValueState("Error");
                 } else if (sSwiftCode.slice(4, 6) !== sIBANCode.slice(0, 2)) {
-                    this.getView().byId("swiftMessage1").setText(" County code mismatch ");
+                    this.getView().byId("swiftMessage1").setText(" County code mismatch");
                     this.getView().byId("swiftMessage1").setVisible(true);
                     this.getView().byId("swiftMessage2").setVisible(false);
 
                 }
-                else if (sSwiftCode.length < 8 || sSwiftCode.length > 11) {
-                    this.getView().byId("swiftMessage1").setText("Minimum length of BIC/SWIFT Code is 8 or 11 characters");
-                    this.getView().byId("swiftMessage1").setVisible(true);
-                    this.getView().byId("swiftMessage2").setVisible(false);
-                    oIpSwift.setValueState("Error");
-                } else {
+                else {
                     this.isValidateSwiftCode(sSwiftCode);
                 }
 
@@ -288,7 +288,7 @@ sap.ui.define([
                         this.getView().byId("swiftMessage1").setVisible(false);
                         oIpSwift.setValueState("Success");
                     } else {
-                        this.getView().byId("swiftMessage1").setText("Incorrect swift code");
+                        this.getView().byId("swiftMessage1").setText("Please Enter the Valid Swift code");
                         this.getView().byId("swiftMessage1").setVisible(true);
                         this.getView().byId("swiftMessage2").setVisible(false);
                         oIpSwift.setValueState("Error");
@@ -311,7 +311,7 @@ sap.ui.define([
                     }
                 }
                 else {
-                    this.getView().byId("swiftMessage1").setText("Incorrect Length ");
+                    this.getView().byId("swiftMessage1").setText(" Incorrect Length ");
                     this.getView().byId("swiftMessage1").setVisible(true);
                     this.getView().byId("swiftMessage2").setVisible(false);
                     oIpSwift.setValueState("Error");
